@@ -332,10 +332,6 @@ while (Battleship.gameEndCheck(player) or Battleship.gameEndCheck(cpu)) == False
     if time.time() - start_time > time_limit:
         print("Time's up! You lost.")
         break
-    if cpu.gameEndCheck == True:
-        print("You lost moron")
-    elif player.gameEndCheck == True:
-        print("You won!!! well done")
     print("CPU shot:")
     cpu.computerShoot(boardType)
     print("-----------------------")
@@ -347,5 +343,9 @@ while (Battleship.gameEndCheck(player) or Battleship.gameEndCheck(cpu)) == False
             player.undoLastShot()
             playerNewShoot = input("Your new shot: ")
             player.shoot(playerNewShoot)
-    
+            
+    if cpu.gameEndCheck == True:
+        print("You lost moron")
+    elif player.gameEndCheck == True:
+        print("You won!!! well done")
     
