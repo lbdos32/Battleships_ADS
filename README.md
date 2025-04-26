@@ -2,7 +2,7 @@
 
 Instructions of how to play my Battleships game:
 
-1. Compile the battleship-main.py file.
+1. Compile/run the battleship-main.py file.
 2. Selct difficulty by choosing easy or medium or difficult
 3. Choose board shape, square or rectangle
 4. Choose to place your ships manually or automatically

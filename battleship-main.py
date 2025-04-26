@@ -57,7 +57,7 @@ class Battleship:
         randomOrientation = random.choice("HV")  # Horizontal or Vertical
 
         # Try placing the ship until a valid position is found
-        for _ in range(100):  # Try 100 times before giving up (to avoid infinite loop)
+        for _ in range(100):  
             start_col = random.choice("ABCDEFGHIJ")  # Random starting column
             start_col_index = ord(start_col.upper()) - ord('A')
             start_row = random.randint(0, maxHeight - 1)  # Random starting row
@@ -323,11 +323,11 @@ else:
         if player.placeShipRandom(name, boardType):
             shipsPlacedCounter += 1
         #randomly places the player's ships if they are too lazy to place them manually
-showPlayerShips = input("Do you want to see you ships? Type 1. (Warning its not a particularly user friendly output)") 
+showPlayerShips = input("Do you want to see you ships? Type 1. (Warning its not a particularly user friendly output): ") 
 if showPlayerShips == "1":
     print(player.ships)
     
-print("Ships all placed\nStarting game now:")         
+print("\nShips all placed\nStarting game now:")         
 start_time = time.time()
 time_limit = gameLength  # length of game is dependent on game difficulty selected    
         
