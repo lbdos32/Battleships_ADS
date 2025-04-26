@@ -170,6 +170,7 @@ class Battleship:
     def shoot(self, coord):
         #fire a shot at a specific coordinate, search for it in all ships.
         #includes ships names just for my information, will delete later as it gives information away to the player.
+        
         for name, ships in self.opponent_ships.items():
             for pos in ships["coords"]:
                 if pos["coord"] == coord:
@@ -300,14 +301,14 @@ cpu.placeShipRandom("Submarine", boardType)
 cpu.placeShipRandom("Cruiser", boardType)
 cpu.placeShipRandom("Destroyer", boardType)
 #places the CPU's ships
-print(cpu.ships)
+#print(cpu.ships)
 
 shipsPlacedCounter = 0
 autoplaceships = input("Would you like to place your own ships (press 1) or have them placed randomly (press 2): \n")
 if autoplaceships == "1":
     while shipsPlacedCounter <= 4:
         print("Ships placed currently", shipsPlacedCounter)
-        inputShipName = input("Type the name of the ship you would like to place: (e.g. Carrier) \n")
+        inputShipName = input("Type the name of the ship you would like to place: (Carrier (5), Battleship(4), Submarine(3), Cruiser(3), Destroyer(2)) \n")
         inputStartCoord = input("Type the starting coordinate: (e.g. A1) \n")
         inputOrientation = input("Type the orientation: ('H' or 'V') \n")
         if player.addToBoard(inputShipName, inputStartCoord, inputOrientation, boardType):
@@ -322,8 +323,10 @@ else:
         if player.placeShipRandom(name, boardType):
             shipsPlacedCounter += 1
         #randomly places the player's ships if they are too lazy to place them manually
-  
-print(player.ships)
+showPlayerShips = input("Do you want to see you ships? Type 1. (Warning its not a particularly user friendly output)") 
+if showPlayerShips == "1":
+    print(player.ships)
+    
 print("Ships all placed\nStarting game now:")         
 start_time = time.time()
 time_limit = gameLength  # length of game is dependent on game difficulty selected    
@@ -335,7 +338,7 @@ while (Battleship.gameEndCheck(player) or Battleship.gameEndCheck(cpu)) == False
     print("CPU shot:")
     cpu.computerShoot(boardType)
     print("-----------------------")
-    playershoot = input("Your shot: ")
+    playershoot = input("Your shot: ").upper()
     player.shoot(playershoot)
     if difficulty == "1":
         undoInput = input("Type '1' if you would like to undo that shot: ")
